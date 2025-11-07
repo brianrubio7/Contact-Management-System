@@ -1,9 +1,45 @@
 #include <stdio.h> 
+#include <stdlib.h>
+
+
+ typedef struct Person {
+    char name[100];
+    char email[100];
+    char number[20]; 
+
+} Person; 
+
+
+void promptQuestions(Person *p) {
+    
+    printf("Enter there name: ");
+    fflush(stdout);
+    fgets(p -> name, sizeof(p -> name), stdin);
+    
+    printf("Enter there email: ");
+    fflush(stdout);
+    fgets(p -> email, sizeof(p -> email), stdin);
+
+    printf("Enter there number: ");
+    fflush(stdout);
+    fgets(p -> number, sizeof(p -> number), stdin); 
+
+}
+
+
+
+
+
 
 
 int main() { 
-    int choice;
 
+    Person p1, *pp;
+    pp = &p1;
+    
+
+    char temp[10]; 
+    int choice;
     /* Menu screen */
     printf("== My Contacts ==\n");
     printf("1. Add Contact\n");
@@ -13,10 +49,18 @@ int main() {
     printf("5. Delete Contact\n");
     printf("-----------------------------\n");
     printf("Enter your choice: "); 
+    fflush(stdout);
 
+    fgets(temp, sizeof(temp), stdin);
+    choice = atoi(temp);
     
-    scanf("%d", &choice);
 
+    switch(choice) { 
+        case 1: 
+            promptQuestions(pp);
+        break;
+    }
+    
     
     
 
