@@ -10,11 +10,13 @@
 } Person; 
 
 
-void promptQuestions(Person *p) {
+ void promptQuestions(Person *p) {
+
+    
     
     printf("Enter there name: ");
     fflush(stdout);
-    fgets(p -> name, sizeof(p -> name), stdin);
+    fgets(p -> name, sizeof(p -> name), stdin); 
     
     printf("Enter there email: ");
     fflush(stdout);
@@ -24,6 +26,7 @@ void promptQuestions(Person *p) {
     fflush(stdout);
     fgets(p -> number, sizeof(p -> number), stdin); 
 
+    
 }
 
 
@@ -34,9 +37,15 @@ void promptQuestions(Person *p) {
 
 int main() { 
 
-    Person p1, *pp;
-    pp = &p1;
     
+    
+
+    /* Allocation of structs */
+    Person *storage = malloc(100 * sizeof(Person));
+    
+
+
+
 
     char temp[10]; 
     int choice;
@@ -57,7 +66,13 @@ int main() {
 
     switch(choice) { 
         case 1: 
-            promptQuestions(pp);
+            static int contactCount = 0;
+
+            promptQuestions(&storage[contactCount]);
+
+            contactCount++;
+
+            printf("Contact added successfully!\n");
         break;
     }
     
